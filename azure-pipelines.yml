@@ -24,7 +24,7 @@ stages:
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
         replaceExistingArchive: true
 
-    steps:
+    
     - script: echo Hello, world !
       displayName: 'Run a one-line script'
 
