@@ -6,7 +6,7 @@
 trigger:
 - master
   Release/*
-  test/*
+  
 
 pool:
   vmImage: ubuntu-latest
