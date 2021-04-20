@@ -5,6 +5,8 @@
 
 trigger:
 - master
+  
+  
 
 stages:
 - stage: Archive
