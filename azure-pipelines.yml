@@ -16,19 +16,16 @@ stages:
     displayName: Archive
     pool:
       vmImage: ubuntu-latest
-    steps:   
+    steps:
     - task: ArchiveFiles@2
-      displayName: 'Archive files'
       inputs:
-        rootFolderOrFile: '$(Build.BinariesDirectory)'
-        includeRootFolder: true
-        archiveType: 'zip'
-        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-        replaceExistingArchive: true
-
-    
-    - script: echo Hello, world !
-      displayName: 'Run a one-line script'
+        rootFolderOrFile: '$(build.sourcesDirectory)'
+        includeRootFolder: false
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
 
 
     
