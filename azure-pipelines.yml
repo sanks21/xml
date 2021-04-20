@@ -5,22 +5,30 @@
 
 trigger:
 - master
+  
+  
 
-pool:
-  vmImage: ubuntu-latest
+stages:
+- stage: Archive
+  displayName: Archive stage
+  jobs:  
+  - job: Archive
+    displayName: Archive
+    pool:
+      vmImage: ubuntu-latest
+    steps:   
+    - task: ArchiveFiles@2
+      displayName: 'Archive files'
+      inputs:
+        rootFolderOrFile: '$(Build.BinariesDirectory)'
+        includeRootFolder: true
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        replaceExistingArchive: true
 
-steps:
-- script: echo Hello, world !
-  displayName: 'Run a one-line script'
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
+    
+    - script: echo Hello, world !
+      displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+
+    
