@@ -29,7 +29,8 @@ stages:
 
     - script: |
         a= "$(git diff --name-only --diff-filter=ACTRM origin/master)"
-        echo $a
+        echo "$a" > file.txt
+        cat file.txt
 
 
     
