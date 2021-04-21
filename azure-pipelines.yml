@@ -19,7 +19,7 @@ stages:
     steps:
     - task: ArchiveFiles@2
       inputs:
-        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
         includeRootFolder: true
         archiveType: zip
     
@@ -44,10 +44,10 @@ stages:
     - task: CopyFiles@2
       inputs:
           Contents: "*zip"
-          TargetFolder: '$(System.DefaultWorkingDirectory)'
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(System.DefaultWorkingDirectory)'
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'changedfiles'
 
 
