@@ -22,6 +22,7 @@ stages:
         rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
         includeRootFolder: false
         archiveType: zip
+        replaceExistingArchive: true
         
     
 
