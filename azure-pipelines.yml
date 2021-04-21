@@ -28,9 +28,7 @@ stages:
         publishLocation: 'Container'
 
     - script: |
-        a= "$(git diff master..Release)"
-        echo "$a" > file.txt
-        cat file.txt
-
+        git diff master Release
+        
 
     
