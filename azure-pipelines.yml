@@ -44,8 +44,8 @@ stages:
     
     - task: ArchiveFiles@2
       inputs:
-        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-        includeRootFolder: false
+        rootFolderOrFile: '$(build.sourcesDirectory)'
+        includeRootFolder: true
     
         
     - task: PublishBuildArtifacts@1
