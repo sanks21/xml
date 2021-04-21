@@ -26,6 +26,7 @@ stages:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'drop'
         publishLocation: 'Container'
+    
 
     - script: |
         b="$(git branch -r)"
@@ -41,6 +42,12 @@ stages:
         done <file.txt
 
         ls zipfiles -la
+    - script: zip -r zipfiles.zip zipfiles
+    
+    - task: CopyFiles@2
+      inputs:
+          Contents: "*zip"
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
         
 
