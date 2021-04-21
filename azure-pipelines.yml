@@ -37,12 +37,17 @@ stages:
     
     - script: zip -r zipfiles.zip zipfiles
     
+    - task: CopyFiles@2
+      inputs:
+          Contents: "*zip"
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
     
     
     - task: ArchiveFiles@2
       inputs:
         rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
         includeRootFolder: true
+        replaceExistingArchive: true
     
         
     - task: PublishBuildArtifacts@1
