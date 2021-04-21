@@ -29,10 +29,10 @@ stages:
 
         while read p; do
             echo "$p"
-            cp "$p" zipfiles
+            cp --parents "$p" zipfiles
         done <file.txt
 
-        ls zipfiles 
+        ls zipfiles -la
     
     - script: zip -r zipfiles.zip zipfiles
     
