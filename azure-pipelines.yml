@@ -17,11 +17,7 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
-    - task: ArchiveFiles@2
-      inputs:
-        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-        includeRootFolder: true
-        
+    
         
     - script: |
         b="$(git branch -r)"
@@ -45,6 +41,11 @@ stages:
       inputs:
           Contents: "*zip"
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+        includeRootFolder: true
+        
     
     - task: PublishBuildArtifacts@1
       inputs:
