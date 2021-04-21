@@ -27,7 +27,7 @@ stages:
         ArtifactName: 'drop'
         publishLocation: 'Container'
     
-    - script: c="$(git diff --name-only --diff-filter=D origin/master.. --relative $d ':!azure-pipelines.yml' ':!Transformation_Script' ':!Transformation_src_files')"
+    
 
 
 
