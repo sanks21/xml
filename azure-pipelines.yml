@@ -19,8 +19,8 @@ stages:
     steps:
     - task: ArchiveFiles@2
       inputs:
-        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-        includeRootFolder: false
+        rootFolderOrFile: '$(Build.BinariesDirectory)'
+        includeRootFolder: true
         
         
     
