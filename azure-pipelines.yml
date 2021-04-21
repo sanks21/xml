@@ -7,7 +7,6 @@ trigger:
 - master
   
   
-
 stages:
 - stage: Archive
   displayName: Archive stage
@@ -17,20 +16,40 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
-    - task: ArchiveFiles@2
+    
+        
+    - script: |
+        b="$(git branch -r)"
+        echo "$b"
+        a="$(git diff --name-only --diff-filter=AMCRT origin/Release1...origin/master)"
+        echo "$a" > file.txt
+        
+
+        mkdir zipfiles
+
+        while read p; do
+            echo "$p"
+            cp --parents "$p" zipfiles
+        done <file.txt
+
+        ls zipfiles 
+    
+    - script: zip -r zipfiles.zip zipfiles
+    
+    - task: CopyFiles@2
       inputs:
-        rootFolderOrFile: '$(build.sourcesDirectory)'
-        includeRootFolder: false
+          Contents: "*zip"
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'drop'
+        ArtifactName: 'changedfiles'
         publishLocation: 'Container'
-
-    - script: |
-        a= "$(git diff --name-only --diff-filter=ACTRM origin/master)"
-        echo $a
-    
+         
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
     
 
 
