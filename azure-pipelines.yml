@@ -47,7 +47,7 @@ stages:
       inputs:
         rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
         includeRootFolder: true
-        replaceExistingArchive: true
+        replaceExistingArchive: false
     
         
     - task: PublishBuildArtifacts@1
