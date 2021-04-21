@@ -7,7 +7,6 @@ trigger:
 - master
   
   
-
 stages:
 - stage: Archive
   displayName: Archive stage
@@ -17,7 +16,11 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
-    
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+        includeRootFolder: true
+        
         
     - script: |
         b="$(git branch -r)"
@@ -42,19 +45,11 @@ stages:
           Contents: "*zip"
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
     
-    
-    - task: ArchiveFiles@2
-      inputs:
-        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-        includeRootFolder: true
-        replaceExistingArchive: false
-    
-        
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'changedfiles'
-        publishLocation: 'Container'   
+        publishLocation: 'Container'
     
     
 
