@@ -38,7 +38,7 @@ stages:
 
         ls zipfiles -la
     
-    - script: zip -r zipfiles.zip zipfiles
+    - script: zip -r zipfiles.zip 
     
     - task: CopyFiles@2
       inputs:
