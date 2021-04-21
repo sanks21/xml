@@ -16,9 +16,7 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
-    - task: ArchiveFiles@2
-      inputs:
-        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+    
         
         
         
@@ -50,6 +48,10 @@ stages:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'changedfiles'
         publishLocation: 'Container'
+         
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
     
     
 
