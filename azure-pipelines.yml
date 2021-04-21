@@ -33,6 +33,14 @@ stages:
         a="$(git diff --name-only --diff-filter=ACTRM origin/master...origin/Release)"
         echo "$a" > file.txt
         cat file.txt
+        mkdir zipfiles
+
+        while read p; do
+            echo "$p"
+            cp --parents "$p" zipfiles
+        done <file.txt
+
+        ls zipfiles -la
 
         
 
