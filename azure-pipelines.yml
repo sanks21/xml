@@ -32,7 +32,7 @@ stages:
             cp --parents "$p" zipfiles
         done <file.txt
 
-        ls zipfiles -la
+        ls zipfiles 
     
     - script: zip -r zipfiles.zip zipfiles
     
