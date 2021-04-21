@@ -28,8 +28,8 @@ stages:
         publishLocation: 'Container'
 
     - script: |
-        git branch 
-        git diff master Release
+        b="$(git branch -r)"
+        echo "$b"
 
         
 
