@@ -28,7 +28,7 @@ stages:
         publishLocation: 'Container'
 
     - script: |
-        a= "$(git diff --name-only --diff-filter=ACTRM origin/master)"
+        a= "$(git diff --name-only --diff-filter=ACTRM origin/master) --relative"
         echo "$a" > file.txt
         cat file.txt
 
