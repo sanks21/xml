@@ -18,7 +18,7 @@ stages:
     steps:
     - task: ArchiveFiles@2
       inputs:
-        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+        rootFolderOrFile: '$(build.sourcesDirectory)'
         includeRootFolder: true
         
         
@@ -38,7 +38,7 @@ stages:
 
         ls zipfiles -la
     
-    - script: zip -r zipfiles.zip 
+    - script: zip -r zipfiles.zip zipfiles
     
     - task: CopyFiles@2
       inputs:
