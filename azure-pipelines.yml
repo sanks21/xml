@@ -22,7 +22,7 @@ stages:
         b="$(git branch -r)"
         echo "$b"
         a=""
-        a="$(git diff --name-only --diff-filter=D origin/master...origin/Release)"
+        a="$(git diff --name-only --diff-filter=AD origin/master...origin/Release)"
         echo "$a" > file.txt
         
 
