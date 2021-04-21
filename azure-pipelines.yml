@@ -36,14 +36,16 @@ stages:
         ls zipfiles -la
     
     - script: zip -r zipfiles.zip zipfiles
-    - task: ArchiveFiles@2
-      inputs:
-        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-        includeRootFolder: true
+    
     - task: CopyFiles@2
       inputs:
           Contents: "*zip"
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+        includeRootFolder: true
     
         
     - task: PublishBuildArtifacts@1
