@@ -45,6 +45,7 @@ stages:
       inputs:
         rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
         includeRootFolder: false
+        archiveType: 7z
         
     
     - task: PublishBuildArtifacts@1
