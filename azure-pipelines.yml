@@ -18,8 +18,8 @@ stages:
     steps:
     - task: ArchiveFiles@2
       inputs:
-        rootFolderOrFile: '$(s)'
-        includeRootFolder: true
+        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+        
         
         
     - script: |
