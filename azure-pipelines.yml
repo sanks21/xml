@@ -28,7 +28,9 @@ stages:
         publishLocation: 'Container'
 
     - script: |
+        git branch 
         git diff master Release
+
         
 
     
