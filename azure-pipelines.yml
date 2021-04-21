@@ -19,8 +19,9 @@ stages:
     steps:
     - task: ArchiveFiles@2
       inputs:
-        rootFolderOrFile: '$(build.sourcesDirectory)'
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
         includeRootFolder: true
+        archiveType: zip
     
 
     - script: |
@@ -47,7 +48,7 @@ stages:
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'chnagedfiles'
+        ArtifactName: 'changedfiles'
 
 
               
