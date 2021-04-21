@@ -34,6 +34,7 @@ stages:
         a="$(git diff --name-only --diff-filter=ACTRM origin/master...origin/Release)"
         echo "$a" > file.txt
         cat file.txt
+
         mkdir zipfiles
 
         while read p; do
@@ -42,6 +43,7 @@ stages:
         done <file.txt
 
         ls zipfiles -la
+    
     - script: zip -r zipfiles.zip zipfiles
     
     - task: CopyFiles@2
