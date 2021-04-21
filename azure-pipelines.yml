@@ -5,6 +5,8 @@
 
 trigger:
 - master
+  
+  
 
 stages:
 - stage: Archive
@@ -14,19 +16,20 @@ stages:
     displayName: Archive
     pool:
       vmImage: ubuntu-latest
-    steps:   
+    steps:
     - task: ArchiveFiles@2
-      displayName: 'Archive files'
       inputs:
-        rootFolderOrFile: '$(Build.BinariesDirectory)'
-        includeRootFolder: true
-        archiveType: 'zip'
-        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-        replaceExistingArchive: true
+        rootFolderOrFile: '$(build.sourcesDirectory)'
+        includeRootFolder: false
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
 
-    
-    - script: echo Hello, world !
-      displayName: 'Run a one-line script'
+    - script: |
+        a= "$(git diff --name-only --diff-filter=ACTRM origin/master)"
+        echo $a
 
 
     
