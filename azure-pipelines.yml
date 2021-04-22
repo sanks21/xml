@@ -33,7 +33,7 @@ stages:
             cp --parents "$p" deletedzipfiles
         done <file.txt
 
-        ls deletedzipfiles -la
+        
     
     - script: zip -r deletedzipfiles.zip deletedzipfiles
     - task: CopyFiles@2
