@@ -26,7 +26,7 @@ stages:
         
         
 
-        mkdir master/zipfiles
+        mkdir /master/zipfiles
 
         while read p; do
             echo "$p"
