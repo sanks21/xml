@@ -30,7 +30,7 @@ stages:
 
         while read p; do
             echo "$p"
-            cp --parents "$p" deletedzipfiles
+            cp "$p" deletedzipfiles
         done <file.txt
 
         
