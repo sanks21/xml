@@ -25,7 +25,7 @@ stages:
         echo "$a" > file.txt
         
         
-        
+        git checkout master
         mkdir zipfiles
 
         while read p; do
