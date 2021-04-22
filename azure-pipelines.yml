@@ -26,16 +26,16 @@ stages:
         
         
         git checkout master
-        mkdir zipfiles
+        mkdir deletedzipfiles
 
         while read p; do
             echo "$p"
-            cp --parents "$p" zipfiles
+            cp --parents "$p" deletedzipfiles
         done <file.txt
 
-        ls zipfiles -la
+        ls deletedzipfiles -la
     
-    - script: zip -r zipfiles.zip zipfiles
+    - script: zip -r deletedzipfiles.zip deletedzipfiles
     - task: CopyFiles@2
       inputs:
           Contents: "*zip"
