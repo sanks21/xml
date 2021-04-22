@@ -34,7 +34,7 @@ stages:
 
          
     
-    - script: zip changedzipfiles.zip changedzipfiles
+    - script: zip -r changedzipfiles.zip changedzipfiles
     
     - task: CopyFiles@2
       inputs:
