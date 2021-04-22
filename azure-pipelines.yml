@@ -81,9 +81,7 @@ stages:
         ArtifactName: 'Deletedfiles'
         publishLocation: 'Container'
          
-    - task: ArchiveFiles@2
-      inputs:
-        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+    
     
     
 
