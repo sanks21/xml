@@ -35,7 +35,7 @@ stages:
 
         
     
-    - script: zip deletedzipfiles.zip deletedzipfiles
+    - script: zip -r deletedzipfiles.zip deletedzipfiles
     - task: CopyFiles@2
       inputs:
           Contents: "*zip"
