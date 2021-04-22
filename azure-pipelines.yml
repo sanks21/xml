@@ -36,6 +36,24 @@ stages:
     
     - script: zip -r changedzipfiles.zip changedzipfiles
     
+    - script: |
+        
+        a="$(git diff --name-only --diff-filter=D origin/master...origin/Release2)"
+        echo "$a" > file.txt
+        
+        
+        git checkout master
+        mkdir deletedzipfiles
+
+        while read p; do
+            echo "$p"
+            cp --parents "$p" deletedzipfiles
+        done <file.txt
+
+        ls deletedzipfiles -la
+
+    - script: zip -r deletedzipfiles.zip deletedzipfiles
+    
     - task: CopyFiles@2
       inputs:
           Contents: "*zip"
@@ -51,36 +69,8 @@ stages:
       inputs:
         rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
 
-    - script: |
-        b="$(git branch -r)"
-        echo "$b"
-        a="$(git diff --name-only --diff-filter=D origin/master...origin/Release2)"
-        echo "$a" > file.txt
-        
-        
-        git checkout master
-        mkdir deletedzipfiles
-
-        while read p; do
-            echo "$p"
-            cp --parents "$p" deletedzipfiles
-        done <file.txt
-
-        ls deletedzipfiles -la
-    
-    - script: zip -r deletedzipfiles.zip deletedzipfiles
-    - task: CopyFiles@2
-      inputs:
-          Contents: "*zip"
-          TargetFolder: '$(Build.ArtifactStagingDirectory)'
     
     
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'Deletedfiles'
-        publishLocation: 'Container'
-         
     
     
     
