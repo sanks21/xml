@@ -32,9 +32,9 @@ stages:
             cp "$p" changedzipfiles
         done <file.txt
 
-        ls changedzipfiles 
+         
     
-    - script: zip -r changedzipfiles.zip changedzipfiles
+    - script: zip changedzipfiles.zip changedzipfiles
     
     - task: CopyFiles@2
       inputs:
