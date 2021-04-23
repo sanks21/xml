@@ -2,7 +2,8 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-
+parameters:
+- basebranch: master
 trigger:
 - master
   
@@ -19,7 +20,7 @@ stages:
     
         
     - script: |
-        basebranch=master
+        
         b="$(git branch -r)"
         echo "$b"
         a="$(git diff --name-only --diff-filter=AMCRT ${{parameters.basebranch}}...origin/Release ':!azure-pipelines.yml')"
