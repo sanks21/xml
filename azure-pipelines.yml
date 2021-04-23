@@ -15,9 +15,8 @@ stages:
     displayName: Archive_deletedfiles
     pool:
       vmImage: ubuntu-latest
-    steps:
     
-        
+    steps:
     - script: |
         b="$(git branch -r)"
         echo "$b"
