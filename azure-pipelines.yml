@@ -20,8 +20,8 @@ stages:
     - script: |
         b="$(git branch -r)"
         echo "$b"
-        a="$(git diff --name-only --diff-filter=D origin/master...origin/Release1)"
-        echo "$a" > file.txt
+        a="$(git diff --name-only --diff-filter=D origin/Release1...origin/master)"
+        echo "$a" > file.txt origin/master
         
         
         git checkout master
